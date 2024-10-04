@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercice 1</title>
+</head>
+<body>
+<div id="question3"></div>
+
+<div id="boutons"></div>
+<button data-taille="3">3 lettres max.</button>
+<button data-taille="6">4 lettre max.</button>
+<button data-taille="9">6 lettre max.</button>
+
+
+<div id="question4"></div>
+
+<script>
+    // tableau de données fourni pour l'exercice
+    let listeNoms = ["Gray",  "Hensley", "Hays", "Cecile", "Sandra", "Hatfield", "Deana", "Villarreal", "Kasey", "Larsen", "Witt", "Hayes", "Ashley", "Concetta", "Maggie", "Latoya", "Alba", "Wynn", "Taylor", "Dionne", "Nieves", "Janell", "Noelle", "Bryant", "Vazquez", "Le", "Dianna", "Ashlee", "Natasha", "Cunningham", "Roseann", "Butler", "Marcella", "Lana", "Shannon", "Jenna", "Hester", "Wilder", "Pace", "Avis", "Buck", "Lorraine", "Crawford", "Curry", "Alice", "Alexander", "Copeland", "Everett", "Dawson", "Elise", "Magdalena", "Graciela", "Lawrence", "Rivers", "Kristine", "Lillie", "Weaver", "Monroe", "Selma", "Patty", "Carla", "Lucia", "Ellison", "Araceli", "Mcclure", "Beck", "Kristie", "Sims", "Violet", "Gina", "Iva", "Wood", "Ursula", "Taylor", "Annie", "Booker", "Blake", "Claudette", "Figueroa", "Cindy", "Eliza", "Pate", "Nicole", "Rosanna", "Dolly", "Nichole", "Ester", "Long", "Gross", "Claudine", "Richmond", "Doris", "Anthony", "Kline", "Sylvia", "Barnett", "Manuela", "Rena", "Dickerson", "Lucile", "Maria", "Douglas", "Liz", "Charity", "Pauline", "Berg", "Romero", "Ray", "Mayo", "Mathis", "Sonya", "Gaines", "Beasley", "Caroline", "Terry", "Fulton", "Acosta", "Casey", "Schmidt", "Buckley", "Jeannie", "Bright", "Harriet", "Coleman", "Earline", "Carlson", "Ginger", "Shauna", "Sarah", "Barrera", "Horn", "Olive", "Lucy", "Anna", "Ernestine", "Rosie", "Tania", "Bates", "Vivian", "Augusta", "Leblanc", "Alberta", "Rosalinda", "Nixon", "Fern", "Margery", "Veronica", "Mcclain", "Rodgers", "Guzman", "Alyssa", "Aguilar", "Snyder", "Laverne", "Louise", "Mayra", "Simmons", "Nellie", "Powell", "Estes", "Earlene", "Pam", "Quinn", "Hart", "James", "Bridges", "Evans", "Leona", "Reid", "Gill", "Mona", "Serrano", "Spencer", "Maritza", "Mia", "Imogene", "Vaughn", "Moon", "Dillard", "Bryan", "Chelsea", "Mindy", "Gwen", "Letitia", "Fay", "Medina", "Morrison", "Leila", "Linda", "Carole", "Malone", "Ayers", "Lorie", "Moody", "Amy", "Blair", "Oneill", "Estelle", "Cochran", "Jimenez"];
+
+    function plusCourtQue(tableau, n) {
+    let mot = [];
+    for (let i = 0; i < tableau.length; i++) {
+        if (tableau[i].length <= n) {
+            mot.push(tableau[i]);
+        }
+    }
+    return mot;
+}
+    
+    let noms_de_moins_de_3lettres = plusCourtQue(listeNoms, 3);
+    console.log(noms_de_moins_de_3lettres);
+
+    function afficher(tableau){
+        
+
+        let question3=document.getElementById("question3")
+        let ul=document.createElement("ul")
+        for(let i=0;i<tableau.length;i++){
+
+            let li=document.createElement("li")
+            li.textContent = tableau[i]
+            ul.appendChild(li)
+        }
+
+        question3.innerHTML=''
+        question3.appendChild(ul)
+
+        
+    }
+
+    afficher(noms_de_moins_de_3lettres)
+
+    let boutons = document.querySelectorAll("#boutons button");
+
+    boutons.forEach(function(bouton) {
+        bouton.addEventListener("click", function() {
+            let taille = parseInt(this.getAttribute("data-taille"));
+            afficheTri(taille);
+        });
+    });
+
+    
+
+    function afficheTri(taille,event) {
+    console.log(event.currentTarget)
+    let listeTriee;
+
+    if (taille === 3) {
+        listeTriee = plusCourtQue(listeNoms, 3);
+    } else if (taille === 6) {
+        listeTriee = plusCourtQue(listeNoms, 4);
+    } else if (taille === 9) {
+        listeTriee = plusCourtQue(listeNoms, 6);
+    }
+
+    let ul = document.createElement("ul");
+    listeTriee.forEach(function(nom) {
+        let li = document.createElement("li");
+        li.textContent = nom;
+        ul.appendChild(li);
+    });
+
+    let question3 = document.getElementById("question3");
+    question3.innerHTML = '';
+    question3.appendChild(ul);
+}
+
+    
+
+   
+
+    /**
+     * Question 1 :
+     * Écrire une fonction plusCourtQue(tableau, n)
+     * qui prend en argument un tableau de mots et un entier
+     * qui renvoie la liste des mots de longueur inférieure ou égale à n
+     * (i.e. mots dont le nombre de caractères est inférieur ou égal à n)
+     */
+
+
+    /**
+     * Question 2 :
+     * Utiliser la fonction de la question 1 pour afficher en console les noms de moins de 3 lettres
+     * Vous devez obtenir [ "Le", "Iva", "Liz", "Ray", "Pam", "Mia", "Fay", "Amy" ]
+     */
+
+
+    /**
+     * Question 3 :
+     * Écrire une fonction afficher(tableau) qui prend en entrée un tableau de noms et affiche dans la div question3
+     * une liste <ul>/<li> des éléments du tableau
+     * Afficher alors les noms de moins de 3 lettres (voir capture d'écran 1 pour le résultat)
+     */
+
+
+    /**
+     * Question 4 :
+     * - partie HTML : ajouter dans la div boutons le code HTML pour avoir 3 boutons (utiliser l'élément <button>)
+     *   comme la capture d'écran le montre et leur mettre un attribut data-taille avec les tailles
+     *   correspondantes aux boutons (i.e. 3, 6, 9). Voir capture 2 pour le résultat
+     * - faire que les boutons captent le clic en appelant la fonction callback afficheTri
+     * - la fonction afficheTri affiche la liste des noms de longueur max correspondant au bouton cliqué
+     *   On utilisera pour cela l'information contenue dans l'attribut data-taille du bouton cliqué
+     *   Attention : le code doit donc fonctionner pour les 3 boutons sans avoir à dupliquer du code
+     *   Résultat voir captures 3, 4 et 5
+     */
+
+
+</script>
+</body>
+</html>

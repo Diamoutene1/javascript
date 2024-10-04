@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>TP noté exercice 2</title>
+    <style>
+        #erreur {
+            color: red;
+        }
+    </style>
+    <script src="data.js"></script>
+    <script src="exo2.js"></script>
+</head>
+<body>
+<h1>TP noté exercice 2</h1>
+
+<form action="https://google.com" id="recherche">
+    <label>Marque ou modèle : <input type="text" name="chaine" id="chaine" value=""></label>
+    <label>État :
+        <select name="etat" id="etat">
+            <option value="tout">Peu importe</option>
+            <option value="excellent">Excellent</option>
+            <option value="tresbon">Très bon</option>
+            <option value="bon">Bon</option>
+            <option value="moyen">Moyen</option>
+            <option value="roulante">Roulante</option>
+        </select>
+    </label>
+    <input type="submit" value="Lancer la recherche">
+    <div id="erreur"></div>
+</form>
+
+<div id="resultats"></div>
+
+<script>
+    init();
+</script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Exo 2</title>
+  <style>
+    section {
+      border: 1px solid black;
+      margin: 20px;
+      padding: 10px;
+    }
+    main {
+      display: grid;
+      grid-template-columns: 20% 30% 50%;
+    }
+    label {
+      display: block;
+      margin-bottom: 10px;
+    }
+  </style>
+  <script src="data.js"></script>
+  <script src="exo2.js"></script>
+</head>
+<body>
+  <h1>Exo2</h1>
+
+  <main>
+    <section>
+      <h2>Div pour question 1</h2>
+      <div id="listeQ1"></div>
+    </section>
+    <section>
+      <h2>Div pour question 3</h2>
+      <form>
+        <fieldset>
+          <legend>Filtres</legend>
+          <label>Nombre minimum de langues parlées
+            <select name="nombre" id="nombre">
+              <option value="indifferent">Indifférent</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+            </select>
+          </label>
+          <label>Langue obligatoire
+            <select name="langue" id="langue">
+              <option value="indifferent">Indifférent</option>
+              <option value="français">français</option>
+              <option value="anglais">anglais</option>
+              <option value="arabe">arabe</option>
+              <option value="chinois">chinois</option>
+              <option value="espagnol">espagnol</option>
+              <option value="allemand">allemand</option>
+              <option value="italien">italien</option>
+              <option value="japonais">japonais</option>
+              <option value="norvégien">norvégien</option>
+            </select>
+          </label>
+
+        </fieldset>
+      </form>
+      <div id="listeQ3"></div>
+    </section>
+    <section id="details"></section>
+  </main>
+
+  <script>
+    "use strict";
+    init();
+  </script>
+</body>
+</html>
